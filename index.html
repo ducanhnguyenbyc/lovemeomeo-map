@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bản đồ tình yêu ❤️</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #map {
+      height: 80vh;
+      width: 100%;
+    }
+    .btns {
+      margin: 1rem;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      background: #007BFF;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #userInfo {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>📍 Đăng nhập và Xem vị trí của bạn</h1>
+  <div class="btns">
+    <button onclick="loginGoogle()">Đăng nhập Google 🟢</button>
+    <button onclick="loginFacebook()">Đăng nhập Facebook 🔵</button>
+  </div>
+  <p id="userInfo">Chưa đăng nhập</p>
+  <div id="map"></div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDDZL2TZvVswUmPByyfnljQYhBl7NyQ9HI",
+      authDomain: "meomeomaps.firebaseapp.com",
+      projectId: "meomeomaps",
+      appId: "1:1081546211177:web:a816327f8c3be43c4c01b7"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function loginGoogle() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(res => {
+          const user = res.user;
+          document.getElementById('userInfo').textContent = `Xin chào ${user.displayName}`;
+          loadMap();
+        })
+        .catch(err => alert("Lỗi Google login: " + err.message));
+    }
+
+    function loginFacebook() {
+      const provider = new firebase.auth.FacebookAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(res => {
+          const user = res.user;
+          document.getElementById('userInfo').textContent = `Xin chào ${user.displayName}`;
+          loadMap();
+        })
+        .catch(err => alert("Lỗi Facebook login: " + err.message));
+    }
+  </script>
+
+  <!-- LeafletJS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    function loadMap() {
+      const saved = localStorage.getItem("lastLocation");
+      const map = L.map('map').setView([10.7626, 106.6602], 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+      }).addTo(map);
+
+      let marker;
+      function show(lat, lng) {
+        if (marker) map.removeLayer(marker);
+        marker = L.marker([lat, lng]).addTo(map).bindPopup("Bạn ở đây").openPopup();
+        map.setView([lat, lng], 15);
+        localStorage.setItem("lastLocation", JSON.stringify({ lat, lng }));
+      }
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          pos => show(pos.coords.latitude, pos.coords.longitude),
+          err => {
+            if (saved) {
+              const { lat, lng } = JSON.parse(saved);
+              show(lat, lng);
+            } else {
+              alert("Không lấy được vị trí và không có dữ liệu đã lưu.");
+            }
+          }
+        );
+      } else {
+        alert("Trình duyệt không hỗ trợ Geolocation");
+      }
+    }
+  </script>
+</body>
+</html>
