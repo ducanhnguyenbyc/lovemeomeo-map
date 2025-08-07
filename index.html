@@ -1,117 +1,154 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bản đồ tình yêu ❤️</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    #map {
-      height: 80vh;
-      width: 100%;
-    }
-    .btns {
-      margin: 1rem;
-    }
-    button {
-      padding: 10px 20px;
-      margin: 0 10px;
-      border: none;
-      background: #007BFF;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #userInfo {
-      margin-top: 1rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đức Anh & Thu Thảo - Trân trọng báo tin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/lockstyle.css">
 </head>
 <body>
-  <h1>📍 Đăng nhập và Xem vị trí của bạn</h1>
-  <div class="btns">
-    <button onclick="loginGoogle()">Đăng nhập Google 🟢</button>
-    <button onclick="loginFacebook()">Đăng nhập Facebook 🔵</button>
-  </div>
-  <p id="userInfo">Chưa đăng nhập</p>
-  <div id="map"></div>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDDZL2TZvVswUmPByyfnljQYhBl7NyQ9HI",
-      authDomain: "meomeomaps.firebaseapp.com",
-      projectId: "meomeomaps",
-      appId: "1:1081546211177:web:a816327f8c3be43c4c01b7"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+    <div id="music-control">
+        <audio id="background-music" src="/mp3/MotDoi.mp3" loop></audio>
+        <button id="play-pause-btn">▶️</button>
+    </div>
 
-    function loginGoogle() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider)
-        .then(res => {
-          const user = res.user;
-          document.getElementById('userInfo').textContent = `Xin chào ${user.displayName}`;
-          loadMap();
-        })
-        .catch(err => alert("Lỗi Google login: " + err.message));
-    }
+    <section id="hero">
+        <div class="hero-content">
+            <p>Trân trọng báo tin & Kính mời</p>
+            <h1>Đức Anh & Thu Thảo</h1>
+            <p class="date">Save the Date: 17.08.2025</p>
+            <a href="#couple" class="scroll-down-btn">Mời bạn tham dự</a>
+        </div>
+    </section>
 
-    function loginFacebook() {
-      const provider = new firebase.auth.FacebookAuthProvider();
-      auth.signInWithPopup(provider)
-        .then(res => {
-          const user = res.user;
-          document.getElementById('userInfo').textContent = `Xin chào ${user.displayName}`;
-          loadMap();
-        })
-        .catch(err => alert("Lỗi Facebook login: " + err.message));
-    }
-  </script>
+    <section id="couple" class="fade-in">
+        <h2>Em bé dễ thương và
+            <br> Mèo quàng thượng</br>
+        </h2>
+        <div class="couple-container">
+            <div class="couple-card">
+                <img src="/images/Thuthao2.jpg" alt="Cô dâu Thu Thảo">
+                <h3>Thu Thảo</h3>
+                <p>"Em mỉm cười, thế giới của anh bỗng bừng lên sắc nắng. Được cùng em đi hết cuộc đời này là điều hạnh phúc nhất đối với anh."</p>
+            </div>
+            <div class="couple-card">
+                <img src="/images/ducanh.jpg" alt="Chú rể Đức Anh">
+                <h3>Đức Anh</h3>
+                <p>"Gặp được anh là duyên phận, yêu anh là định mệnh. Cảm ơn anh đã đến và cùng em viết nên câu chuyện tình yêu của chúng mình."</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- LeafletJS -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    function loadMap() {
-      const saved = localStorage.getItem("lastLocation");
-      const map = L.map('map').setView([10.7626, 106.6602], 13);
+    <section id="story" class="fade-in">
+        <h2>Chuyện Tình Yêu</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <h3>Ngày Đầu Gặp Gỡ</h3>
+                    <p>12.08.2024</p>
+                    <p>Chúng tôi tình cờ gặp nhau trong một quán cà phê nhỏ, nơi bắt đầu cho một hành trình đầy yêu thương.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <h3>Lời Tỏ Tình</h3>
+                    <p>17.8.2024</p>
+                    <p>Qua bao nhiêu sự hiểu lầm, anh đã ngỏ lời và em đã đồng ý, chính thức viết tên nhau vào trái tim.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <h3>Một năm bên nhau</h3>
+                    <p>17.08.2025</p>
+                    <p>Khoảnh khắc không thể quên khi anh và em đã cùng nhau bên nhau được 1 năm. Mọi sóng gió đều có sự san sẻ của chúng ta, hãy cố gắng em nhé".</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-      }).addTo(map);
+    <section id="events" class="fade-in">
+        
+        <div class="lock-background">
+        </div>
+        <div class="lock-interface">
+            <h2 class="locl-interface-lock">Mật mã Tình yêu</h2>
+            <div id="password-display">
+                <i id="lock-icon" class="fa-solid fa-lock"></i>
+                <span>*</span>
+                <span>*</span>
+                <span>*</span>
+                <span>*</span>
+                <span>*</span>
+                <span>*</span>
+            </div>
+            <div id="keypad">
+                <button class="keypad-btn" data-value="1">1<span>QZ</span></button>
+                <button class="keypad-btn" data-value="2">2<span>ABC</span></button>
+                <button class="keypad-btn" data-value="3">3<span>DEF</span></button>
+                <button class="keypad-btn" data-value="4">4<span>GHI</span></button>
+                <button class="keypad-btn" data-value="5">5<span>JKL</span></button>
+                <button class="keypad-btn" data-value="6">6<span>MNO</span></button>
+                <button class="keypad-btn" data-value="7">7<span>PQRS</span></button>
+                <button class="keypad-btn" data-value="8">8<span>TUV</span></button>
+                <button class="keypad-btn" data-value="9">9<span>WXYZ</span></button>
+                <button class="keypad-btn" data-value="*">*</button>
+                <button class="keypad-btn" data-value="0">0<span>+</span></button>
+                <button id="delete-btn"><i class="fa-solid fa-delete-left"></i></button>
+            </div>
+            
+        </div>
+        </div>
+    </section>
 
-      let marker;
-      function show(lat, lng) {
-        if (marker) map.removeLayer(marker);
-        marker = L.marker([lat, lng]).addTo(map).bindPopup("Bạn ở đây").openPopup();
-        map.setView([lat, lng], 15);
-        localStorage.setItem("lastLocation", JSON.stringify({ lat, lng }));
-      }
+    <section id="countdown" class="fade-in">
+        <h2 class="countdown-timer">Kỷ niệm một năm ngày quen nhau</h2>
+        <h3 class="countdown-timer">Ngày 17 tháng 8 năm 2025</h3>
+        <div id="countdown-timer">
+            <div class="timer-box"><span id="days">00</span><span>Ngày</span></div>
+            <div class="timer-box"><span id="hours">00</span><span>Giờ</span></div>
+            <div class="timer-box"><span id="minutes">00</span><span>Phút</span></div>
+            <div class="timer-box"><span id="seconds">00</span><span>Giây</span></div>
+        </div>
+    </section>
 
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          pos => show(pos.coords.latitude, pos.coords.longitude),
-          err => {
-            if (saved) {
-              const { lat, lng } = JSON.parse(saved);
-              show(lat, lng);
-            } else {
-              alert("Không lấy được vị trí và không có dữ liệu đã lưu.");
-            }
-          }
-        );
-      } else {
-        alert("Trình duyệt không hỗ trợ Geolocation");
-      }
-    }
-  </script>
+    <section id="gallery" class="fade-in">
+        <h2>Album Kỷ Niệm</h2>
+        <div class="gallery-grid">
+            <img src="/images/anhchung2.jpg" alt="Ảnh cưới 1">
+            <img src="/images/anhchung1.jpg" alt="Ảnh cưới 2">
+            <img src="/images/anhnhinhau.jpg" alt="Ảnh cưới 3">
+            <img src="/images/anhdoi1.jpg" alt="Ảnh cưới 4">
+            <img src="/images/anhdoichumo.jpg" alt="Ảnh cưới 5">
+            <img src="/images/anhdoigiua.jpg" alt="Ảnh cưới 6">
+    
+        </div>
+    </section>
+    
+    <section id="gifting" class="fade-in">
+        <h2>Gửi Lời Chúc phúc 
+            Hạnh phúc, May mắn</h2>
+        <p>Sự hiện diện của bạn là món quà quý giá nhất. Nếu bạn có mong muốn gửi quà để tiếp thêm động lực có thể gửi tại đây.</p>
+        <div class="qr-container">
+            <div class="qr-card">
+                <img src="/images/qr-chure.jpg" alt="QR Mừng cưới Chú rể">
+                <p>Tiếp thêm động lực</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer>
+        <p>Cảm ơn bạn đã ghé thăm!</p>
+        <h2 class="ducanh">Mèo ❣️ Mộc</h2>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/lockscript.js"></script>
 </body>
 </html>
