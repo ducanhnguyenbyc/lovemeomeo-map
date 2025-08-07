@@ -18,6 +18,7 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     text-align: center;
+    cursor: none;
 }
 
 h1, h2, h3 {
@@ -634,6 +635,206 @@ footer h2 {
     .timeline-item::after { left: 12px; }
 
 }
+
+
+/* --- Loading screen with heart fill --- */
+#loading-screen {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background-color: #fff0f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity 0.8s ease;
+  font-family: var(--primary-font);
+}
+
+.heart-loader {
+  position: relative;
+  width: 200px;
+  height: 180px;
+}
+
+.heart-outline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 180px;
+  z-index: 2;
+}
+
+.heart-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background-color: #ff7eb9;
+  clip-path: path("M100 30 C100 0, 0 0, 0 60 C0 120, 100 180, 100 180 C100 180, 200 120, 200 60 C200 0, 100 0, 100 30 Z");
+  transition: height 0.2s ease;
+  z-index: 1;
+}
+
+.heart-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 3;
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
+}
+
+/* Trái tim nhỏ bay lúc loading */
+.hearts-container {
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.heart-small {
+  width: 20px;
+  height: 20px;
+  background: red;
+  position: relative;
+  transform: rotate(-45deg);
+  animation: float 3s infinite;
+}
+
+.heart-small::before,
+.heart-small::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: red;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.heart-small::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart-small::after {
+  top: 0;
+  left: 10px;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+  100% { transform: translateY(-150px) rotate(-45deg); opacity: 0; }
+}
+
+/* --- Tim bay theo con trỏ sau loading --- */
+.cursor-heart {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: #ff4d88;
+  border-radius: 50%;
+  transform: rotate(-45deg);
+  pointer-events: none;
+  animation: heart-float 1s ease-out forwards;
+  z-index: 9999;
+}
+.cursor-heart::before,
+.cursor-heart::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ff4d88;
+  border-radius: 50%;
+}
+.cursor-heart::before {
+  top: -5px;
+  left: 0;
+}
+.cursor-heart::after {
+  top: 0;
+  left: 5px;
+}
+@keyframes heart-float {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-40px) scale(1.5); }
+}
+
+
+/* Ẩn con trỏ chuột gốc */
+body {
+  cursor: none;
+}
+
+/* Icon mèo giả con trỏ */
+#custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  font-size: 28px;
+  color: #ff4d88;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease-out;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+#floating-hearts {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Mỗi trái tim */
+.floating-heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ff4d88;
+  transform: rotate(-45deg);
+  opacity: 0.8;
+  animation: float-heart 5s linear infinite;
+}
+.floating-heart::before,
+.floating-heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ff4d88;
+  border-radius: 50%;
+}
+.floating-heart::before {
+  top: -10px;
+  left: 0;
+}
+.floating-heart::after {
+  top: 0;
+  left: 10px;
+}
+
+/* Hiệu ứng bay như gió */
+@keyframes float-heart {
+  0% {
+    transform: translateY(0) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(30px) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
 
 
 
