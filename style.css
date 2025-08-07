@@ -73,7 +73,7 @@ section {
 /* --- 1. Màn hình chính (Hero) --- */
 #hero {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Hiệu ứng parallax */
@@ -632,4 +632,5 @@ footer h2 {
     .timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; text-align: left !important; }
     .timeline-item:nth-child(even) { left: 0; }
     .timeline-item::after { left: 12px; }
+
 }
