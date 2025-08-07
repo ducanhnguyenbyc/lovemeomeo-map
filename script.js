@@ -72,4 +72,84 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, { once: true }); // Chỉ chạy 1 lần
 
+
 });
+// Loading trái tim lấp đầy và chuyển trang
+window.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("loading-screen");
+  const fill = document.getElementById("heart-fill");
+  const percentText = document.getElementById("loading-percentage");
+
+  let percent = 0;
+  const interval = setInterval(() => {
+    percent++;
+    percentText.textContent = percent + "%";
+    fill.style.height = percent + "%";
+
+    if (percent >= 100) {
+      clearInterval(interval);
+      loader.style.opacity = 0;
+      loader.style.pointerEvents = "none";
+      setTimeout(() => {
+        loader.remove();
+        enableCursorHearts(); // gọi hiệu ứng tim theo con trỏ
+      }, 800);
+    }
+  }, 60); // 3s
+});
+
+// Hiệu ứng trái tim bay theo con trỏ
+function enableCursorHearts() {
+  document.addEventListener("mousemove", (e) => {
+    const heart = document.createElement("div");
+    heart.className = "cursor-heart";
+    heart.style.left = `${e.clientX}px`;
+    heart.style.top = `${e.clientY}px`;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1000);
+  });
+}
+
+// Hiển thị icon mèo bám theo chuột
+document.addEventListener("mousemove", (e) => {
+  const cursor = document.getElementById("custom-cursor");
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+
+// Sau khi loading xong
+function enableCursorHearts() {
+  // Tim bay theo chuột (đã có)
+  document.addEventListener("mousemove", (e) => {
+    const heart = document.createElement("div");
+    heart.className = "cursor-heart";
+    heart.style.left = `${e.clientX}px`;
+    heart.style.top = `${e.clientY}px`;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1000);
+  });
+
+  // Tim bay khắp màn hình
+  setInterval(() => {
+    createFloatingHeart();
+  }, 800); // 1 tim mỗi 800ms
+}
+
+function createFloatingHeart() {
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+
+  // Vị trí ngẫu nhiên
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.bottom = "0";
+  heart.style.animationDuration = (4 + Math.random() * 2) + "s";
+  heart.style.opacity = Math.random() * 0.6 + 0.4;
+  heart.style.transform = `scale(${Math.random() * 0.5 + 0.8}) rotate(-45deg)`;
+
+  document.getElementById("floating-hearts").appendChild(heart);
+
+  // Xóa sau khi kết thúc animation
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
