@@ -1,0 +1,85 @@
+/* General Styling */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;700&display=swap');
+/* Page 2: Lock Page */
+.lock-page {
+    background-color: #fde_df1;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+.lock-background {
+    flex: 1;
+    background: url('../anh/lock-background.png') no-repeat center center/cover;
+}
+.lock-interface {
+    flex: 1;
+    background-color:#eae4e7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+.lock-interface h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+#password-display {
+    font-size: 2.5rem;
+    letter-spacing: 15px;
+    margin-bottom: 40px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+#lock-icon {
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+#lock-icon.unlocked { color: #28a745; }
+#lock-icon.fail { color: #dc3545; }
+#keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+.keypad-btn, #delete-btn {
+    padding: 15px;
+    font-size: 1.8rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+.keypad-btn:active, #delete-btn:active {
+    transform: scale(0.95);
+    background-color: #f0f0f0;
+}
+.keypad-btn span {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #888;
+}
+#delete-btn { font-size: 1.5rem; }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .lock-page { flex-direction: column; }
+    .lock-background { display: none; }
+    .lock-interface { flex: auto; }
+    .menu-grid { grid-template-columns: 1fr; width: 90%; }
+    .landing-page h1 { font-size: 2.5rem; }
+}
