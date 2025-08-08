@@ -244,7 +244,7 @@ section {
 
 /* --- 5. Đếm ngược --- */
 #countdown {
-    background-color: var(--primary-color);
+    background-color: #c35d92;
     color: white;
     padding: 60px 20px;
 }
@@ -318,6 +318,7 @@ footer h2 {
     h2 { font-size: 2.5rem; }
     #hero { background-attachment: scroll; } /* Fix ảnh trên mobile */
     #hero h1 { font-size: 2rem; }
+    #countdown h2 {font-size: 2rem;}
     .timeline::after { left: 20px; }
     .timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; text-align: left !important; }
     .timeline-item:nth-child(even) { left: 0; }
@@ -527,6 +528,7 @@ body {
     opacity: 0;
   }
 }
+
 
 
 
