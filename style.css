@@ -390,7 +390,7 @@ section {
 /* --- 1. Màn hình chính (Hero) --- */
 #hero {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Hiệu ứng parallax */
@@ -834,6 +834,7 @@ body {
     opacity: 0;
   }
 }
+
 
 
 
