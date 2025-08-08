@@ -633,8 +633,8 @@ footer h2 {
     .timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; text-align: left !important; }
     .timeline-item:nth-child(even) { left: 0; }
     .timeline-item::after { left: 12px; }
-
 }
+
 
 
 /* --- Loading screen with heart fill --- */
@@ -834,6 +834,7 @@ body {
     opacity: 0;
   }
 }
+
 
 
 
