@@ -319,6 +319,7 @@ footer h2 {
     #hero { background-attachment: scroll; } /* Fix ảnh trên mobile */
     #hero h1 { font-size: 2rem; }
     #countdown h2 {font-size: 2rem;}
+    #countdown h2 {font-size: 1.5rem;}
     .timeline::after { left: 20px; }
     .timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; text-align: left !important; }
     .timeline-item:nth-child(even) { left: 0; }
@@ -528,6 +529,7 @@ body {
     opacity: 0;
   }
 }
+
 
 
 
