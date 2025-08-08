@@ -107,14 +107,6 @@ section {
     letter-spacing: 3px;
     white-space: nowrap; /* Không cho xuống dòng */
 }
-
-/* Mobile: thu nhỏ font để vừa 1 hàng */
-@media (max-width: 768px) {
-    #hero h1 {
-        font-size: 2rem;
-    }
-}
-
 #hero p {
     font-size: 1.2rem;
 }
@@ -325,7 +317,7 @@ footer h2 {
 @media (max-width: 768px) {
     h2 { font-size: 2.5rem; }
     #hero { background-attachment: scroll; } /* Fix ảnh trên mobile */
-    #hero h1 { font-size: 3rem; }
+    #hero h1 { font-size: 2rem; }
     .timeline::after { left: 20px; }
     .timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; text-align: left !important; }
     .timeline-item:nth-child(even) { left: 0; }
@@ -535,6 +527,7 @@ body {
     opacity: 0;
   }
 }
+
 
 
 
