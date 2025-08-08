@@ -105,7 +105,16 @@ section {
     font-size: 5rem;
     margin: 10px 0;
     letter-spacing: 3px;
+    white-space: nowrap; /* Không cho xuống dòng */
 }
+
+/* Mobile: thu nhỏ font để vừa 1 hàng */
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 2rem;
+    }
+}
+
 #hero p {
     font-size: 1.2rem;
 }
@@ -526,6 +535,7 @@ body {
     opacity: 0;
   }
 }
+
 
 
 
