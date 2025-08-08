@@ -8,8 +8,6 @@
     --bg-color: #fdfaf6; /* Màu nền kem */
 }
 
-
-
 body {
     font-family: var(--primary-font);
     margin: 0;
@@ -18,7 +16,7 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     text-align: center;
-    cursor: none;
+    cursor: none; /* Ẩn con trỏ gốc */
 }
 
 h1, h2, h3 {
@@ -30,6 +28,11 @@ h2 {
     font-size: 3rem;
     color: var(--primary-color);
     margin: 50px 0;
+}
+
+.name {
+    color: #f8f8f8;
+    font-size: 30px; 
 }
 
 section {
@@ -44,12 +47,10 @@ section {
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-
 .fade-in.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
-
 
 /* --- Nút điều khiển nhạc --- */
 #music-control {
@@ -58,7 +59,6 @@ section {
     right: 20px;
     z-index: 1000;
 }
-
 #play-pause-btn {
     width: 40px;
     height: 40px;
@@ -70,31 +70,28 @@ section {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-
 /* --- 1. Màn hình chính (Hero) --- */
 #hero {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/background.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Hiệu ứng parallax */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Desktop sẽ giữ parallax */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     color: white;
 }
-
 #hero h1 {
     font-size: 5rem;
     margin: 10px 0;
     letter-spacing: 3px;
 }
-
 #hero p {
     font-size: 1.2rem;
 }
-
 .scroll-down-btn {
     margin-top: 30px;
     padding: 12px 25px;
@@ -105,12 +102,10 @@ section {
     font-weight: bold;
     transition: background-color 0.3s, color 0.3s;
 }
-
 .scroll-down-btn:hover {
     background-color: white;
     color: var(--primary-color);
 }
-
 
 /* --- 2. Cô dâu & Chú rể --- */
 .couple-container {
@@ -119,12 +114,10 @@ section {
     flex-wrap: wrap;
     gap: 30px;
 }
-
 .couple-card {
     flex-basis: 45%;
     min-width: 280px;
 }
-
 .couple-card img {
     width: 150px;
     height: 150px;
@@ -132,19 +125,16 @@ section {
     object-fit: cover;
     border: 4px solid var(--primary-color);
 }
-
 .couple-card h3 {
     font-size: 2.5rem;
     margin: 10px 0;
     color: var(--primary-color);
 }
-
 .couple-card p {
     font-style: italic;
     font-size: 0.9rem;
     line-height: 1.6;
 }
-
 
 /* --- 3. Chuyện Tình Yêu (Timeline) --- */
 .timeline {
@@ -197,7 +187,6 @@ section {
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
-
 /* --- 4. Sự kiện --- */
 .event-container {
     display: flex;
@@ -205,7 +194,6 @@ section {
     gap: 40px;
     flex-wrap: wrap;
 }
-
 .event-card {
     background-color: white;
     padding: 30px;
@@ -214,7 +202,6 @@ section {
     width: 300px;
     border-top: 5px solid var(--primary-color);
 }
-
 .event-card h3 {
     font-size: 2rem;
     margin-top: 0;
@@ -234,7 +221,7 @@ section {
     transition: background-color 0.3s;
 }
 .map-btn:hover {
-    background-color: #55414c;
+    background-color: #a7688b;
 }
 
 /* --- 5. Đếm ngược --- */
@@ -308,333 +295,19 @@ footer h2 {
     color: var(--primary-color);
 }
 
-/* --- Responsive cho điện thoại --- */
+/* --- Responsive --- */
 @media (max-width: 768px) {
     h2 { font-size: 2.5rem; }
+    #hero { background-attachment: scroll; } /* Fix ảnh trên mobile */
     #hero h1 { font-size: 3rem; }
-
-    .timeline::after { left: 20px; }
-    .timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; text-align: left !important; }
-    .timeline-item:nth-child(even) { left: 0; }
-    .timeline-item::after { left: 12px; }
-}/* --- Cài đặt chung & Font chữ --- */
-:root {
-    --primary-font: 'Quicksand', sans-serif;
-    --secondary-font: 'Great Vibes', cursive;
-    --primary-color: #6a515e; /* Màu hồng đất */
-    --secondary-color: #d4af37; /* Màu vàng gold */
-    --text-color: #333;
-    --bg-color: #fdfaf6; /* Màu nền kem */
-}
-
-body {
-    font-family: var(--primary-font);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    text-align: center;
-}
-
-h1, h2, h3 {
-    font-family: var(--secondary-font);
-    font-weight: normal;
-}
-
-h2 {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin: 50px 0;
-}
-
-section {
-    padding: 40px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* --- Hiệu ứng Fade-in khi cuộn --- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-in.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* --- Nút điều khiển nhạc --- */
-#music-control {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-#play-pause-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid var(--primary-color);
-    background-color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-
-/* --- 1. Màn hình chính (Hero) --- */
-#hero {
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Hiệu ứng parallax */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-}
-
-#hero h1 {
-    font-size: 5rem;
-    margin: 10px 0;
-    letter-spacing: 3px;
-}
-
-#hero p {
-    font-size: 1.2rem;
-}
-
-.scroll-down-btn {
-    margin-top: 30px;
-    padding: 12px 25px;
-    border: 2px solid white;
-    border-radius: 30px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.scroll-down-btn:hover {
-    background-color: white;
-    color: var(--primary-color);
-}
-
-
-/* --- 2. Cô dâu & Chú rể --- */
-.couple-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-.couple-card {
-    flex-basis: 45%;
-    min-width: 280px;
-}
-
-.couple-card img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--primary-color);
-}
-
-.couple-card h3 {
-    font-size: 2.5rem;
-    margin: 10px 0;
-    color: var(--primary-color);
-}
-
-.couple-card p {
-    font-style: italic;
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-
-/* --- 3. Chuyện Tình Yêu (Timeline) --- */
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background-color: var(--primary-color);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -1px;
-}
-.timeline-item {
-    padding: 10px 40px;
-    position: relative;
-    width: 50%;
-}
-.timeline-item:nth-child(odd) {
-    left: 0;
-    text-align: right;
-}
-.timeline-item:nth-child(even) {
-    left: 50%;
-    text-align: left;
-}
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    right: -8px;
-    background-color: white;
-    border: 4px solid var(--primary-color);
-    top: 25px;
-    border-radius: 50%;
-    z-index: 1;
-}
-.timeline-item:nth-child(even)::after {
-    left: -8px;
-}
-.timeline-content {
-    padding: 15px 20px;
-    background-color: white;
-    border-radius: 6px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
-
-/* --- 4. Sự kiện --- */
-.event-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.event-card {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 300px;
-    border-top: 5px solid var(--primary-color);
-}
-
-.event-card h3 {
-    font-size: 2rem;
-    margin-top: 0;
-}
-.event-card .time {
-    font-weight: bold;
-    color: var(--primary-color);
-}
-.map-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s;
-}
-.map-btn:hover {
-    background-color: #55414c;
-}
-
-/* --- 5. Đếm ngược --- */
-#countdown {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 60px 20px;
-}
-#countdown h2 {
-    color: white;
-}
-#countdown-timer {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-.timer-box {
-    display: flex;
-    flex-direction: column;
-}
-.timer-box span:first-child {
-    font-size: 3rem;
-    font-weight: bold;
-}
-.timer-box span:last-child {
-    font-size: 1rem;
-    text-transform: uppercase;
-}
-
-/* --- 6. Album ảnh --- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 10px;
-}
-.gallery-grid img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.gallery-grid img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-/* --- 7. Mừng cưới --- */
-.qr-container {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-.qr-card img {
-    width: 200px;
-    height: 200px;
-    border: 1px solid #ddd;
-    padding: 10px;
-}
-
-/* --- Chân trang --- */
-footer {
-    padding: 40px;
-    background-color: #f3e9e4;
-}
-footer h2 {
-    margin: 0;
-    color: var(--primary-color);
-}
-
-/* --- Responsive cho điện thoại --- */
-@media (max-width: 768px) {
-    h2 { font-size: 2.5rem; }
-    #hero h1 { font-size: 3rem; }
-
     .timeline::after { left: 20px; }
     .timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; text-align: left !important; }
     .timeline-item:nth-child(even) { left: 0; }
     .timeline-item::after { left: 12px; }
 }
 
+/* --- Loading screen with heart fill --- */
+/* ... giữ nguyên phần loading, trái tim bay, con trỏ mèo ... */
 
 
 /* --- Loading screen with heart fill --- */
@@ -834,6 +507,7 @@ body {
     opacity: 0;
   }
 }
+
 
 
 
