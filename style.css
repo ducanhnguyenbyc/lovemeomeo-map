@@ -318,8 +318,8 @@ footer h2 {
 /* --- Responsive --- */
 @media (max-width: 768px) {
     h2 { font-size: 2.5rem; }
-    #hero { background-attachment: scroll; } /* Fix ảnh trên mobile */
-    #hero h1 { font-size: 2rem; }
+    #hero { background-attachment: scroll; } /* Fix parallax mobile */
+    #hero h1 { font-size: 2.5rem; white-space: normal; }
     #countdown h2 {font-size: 2rem;}
     #countdown h2 {font-size: 1.5rem;}
     .timeline::after { left: 20px; }
@@ -532,10 +532,7 @@ body {
     opacity: 0;
   }
 }
-@media (max-width: 768px) {
-  #hero { background-attachment: scroll; } /* Fix parallax mobile */
-  #hero h1 { font-size: 2.5rem; white-space: normal; }
-}
+
 
 /* 3D card couple */
 .couple-card {
@@ -570,6 +567,7 @@ body {
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
+
 
 
 
