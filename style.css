@@ -1,93 +1,49 @@
-/* --- Cài đặt chung & Font chữ --- */
+/* =========================
+   1. Biến & Reset
+========================= */
 :root {
-    --primary-font: 'Quicksand', sans-serif;
-    --secondary-font: 'Great Vibes', cursive;
-    --primary-color: #6a515e; /* Màu hồng đất */
-    --secondary-color: #d4af37; /* Màu vàng gold */
-    --text-color: #333;
-    --bg-color: #fdfaf6; /* Màu nền kem */
+  --primary-font: 'Quicksand', sans-serif;
+  --secondary-font: 'Great Vibes', cursive;
+  --primary-color: #6a515e;
+  --secondary-color: #d4af37;
+  --text-color: #333;
+  --bg-color: #fdfaf6;
 }
 
-html, body {
-    overflow-x: hidden; /* Fix tràn viền mobile */
+html, body { overflow-x: hidden; margin: 0; padding: 0; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+img, video { 
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
 }
 
-* {
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
+/* =========================
+   2. Body & Heading
+========================= */
 body {
-    font-family: var(--primary-font);
-    margin: 0;
-    padding: 0;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    text-align: center;
-    cursor: none; /* Ẩn con trỏ gốc */
+  font-family: var(--primary-font);
+  background: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
+  cursor: none;
 }
 
 h1, h2, h3 {
-    font-family: var(--secondary-font);
-    font-weight: normal;
+  font-family: var(--secondary-font);
+  font-weight: normal;
 }
-
 h2 {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin: 50px 0;
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin: 50px 0;
 }
 
-.name {
-    color: #f8f8f8;
-    font-size: 30px; 
-}
-
-section {
-    padding: 40px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* --- Hiệu ứng Fade-in khi cuộn --- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.fade-in.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- Nút điều khiển nhạc --- */
-#music-control {
-    position: fixed;
-    bottom: 20px;
-    left: 20px; /* Đẩy sang trái */
-    z-index: 1000;
-}
-
-#play-pause-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    background-color: var(--primary-color);
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s;
-}
-#play-pause-btn:hover {
-    background-color: #a7688b;
-}
-
-/* --- 1. Màn hình chính (Hero) --- */
+/* =========================
+   3. Hero
+========================= */
 #hero {
   height: 100vh;
   background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('./background.jpg') center/cover no-repeat;
@@ -99,9 +55,7 @@ section {
   color: #fff;
 }
 #hero h1 {
-  font-family: var(--secondary-font);
   font-size: 5rem;
-  letter-spacing: 3px;
   text-shadow: 0 4px 10px rgba(0,0,0,.5);
 }
 #hero p { font-size: 1.3rem; }
@@ -110,431 +64,45 @@ section {
   padding: 12px 25px;
   border: 2px solid #fff;
   border-radius: 30px;
-  font-weight: bold;
   color: #fff;
   text-decoration: none;
   transition: .3s;
 }
 .scroll-down-btn:hover { background: #fff; color: var(--primary-color); }
-/* --- 2. Cô dâu & Chú rể --- */
-.couple-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-.couple-card {
-    flex-basis: 45%;
-    min-width: 280px;
-}
-.couple-card img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--primary-color);
-}
-.couple-card h3 {
-    font-size: 2.5rem;
-    margin: 10px 0;
-    color: var(--primary-color);
-}
-.couple-card p {
-    font-style: italic;
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
 
-/* --- 3. Chuyện Tình Yêu (Timeline) --- */
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background-color: var(--primary-color);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -1px;
-}
-.timeline-item {
-    padding: 10px 40px;
-    position: relative;
-    width: 50%;
-}
-.timeline-item:nth-child(odd) {
-    left: 0;
-    text-align: right;
-}
-.timeline-item:nth-child(even) {
-    left: 50%;
-    text-align: left;
-}
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    right: -8px;
-    background-color: white;
-    border: 4px solid var(--primary-color);
-    top: 25px;
-    border-radius: 50%;
-    z-index: 1;
-}
-.timeline-item:nth-child(even)::after {
-    left: -8px;
-}
-.timeline-content {
-    padding: 15px 20px;
-    background-color: white;
-    border-radius: 6px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
-/* --- 4. Sự kiện --- */
-.event-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-.event-card {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 300px;
-    border-top: 5px solid var(--primary-color);
-}
-.event-card h3 {
-    font-size: 2rem;
-    margin-top: 0;
-}
-.event-card .time {
-    font-weight: bold;
-    color: var(--primary-color);
-}
-.map-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s;
-}
-.map-btn:hover {
-    background-color: #a7688b;
-}
-
-/* --- 5. Đếm ngược --- */
-#countdown {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 60px 20px;
-}
-#countdown h2 {
-    color: white;
-}
-#countdown-timer {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-.timer-box {
-    display: flex;
-    flex-direction: column;
-}
-.timer-box span:first-child {
-    font-size: 3rem;
-    font-weight: bold;
-}
-.timer-box span:last-child {
-    font-size: 1rem;
-    text-transform: uppercase;
-}
-
-/* --- 6. Album ảnh --- */
+/* =========================
+   4. Album ảnh
+========================= */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* PC: 3 ảnh/hàng */
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 }
 .gallery-grid img {
   width: 100%;
-  height: auto;           /* QUAN TRỌNG: tránh bị mất ảnh trên mobile */
+  height: auto;   /* QUAN TRỌNG: không để 100% */
   border-radius: 10px;
   object-fit: cover;
   cursor: pointer;
-  transition: transform .4s, box-shadow .4s;
+  transition: transform .5s ease, box-shadow .5s ease;
 }
 .gallery-grid img:hover {
-  transform: scale(1.05) rotateZ(2deg);
-  box-shadow: 0 12px 25px rgba(0,0,0,.25);
+  transform: scale(1.08) rotateZ(2deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,.3);
 }
 
-/* Tablet: 2 ảnh / hàng */
+/* Tablet */
 @media (max-width: 991px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-/* Mobile: 1 ảnh / hàng */
+/* Mobile */
 @media (max-width: 576px) {
   .gallery-grid { grid-template-columns: 1fr; gap: 10px; }
 }
 
-
-/* --- 7. Mừng cưới --- */
-.qr-container {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-.qr-card img {
-    width: 200px;
-    height: 200px;
-    border: 1px solid #ddd;
-    padding: 10px;
-}
-
-/* --- Chân trang --- */
-footer {
-    padding: 40px;
-    background-color: #f3e9e4;
-}
-footer h2 {
-    margin: 0;
-    color: var(--primary-color);
-}
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
-    h2 { font-size: 2.5rem; }
-    #hero { background-attachment: scroll; } /* Fix parallax mobile */
-    #hero h1 { font-size: 2.5rem; white-space: normal; }
-    #countdown h2 {font-size: 2rem;}
-    #countdown h2 {font-size: 1.5rem;}
-    .timeline::after { left: 20px; }
-    .timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; text-align: left !important; }
-    .timeline-item:nth-child(even) { left: 0; }
-    .timeline-item::after { left: 12px; }
-}
-
-/* --- Giữ nguyên phần loading, trái tim bay, con trỏ mèo ... */
-
-/* --- Loading screen with heart fill --- */
-/* ... giữ nguyên phần loading, trái tim bay, con trỏ mèo ... */
-
-
-/* --- Loading screen with heart fill --- */
-#loading-screen {
-  position: fixed;
-  z-index: 9999;
-  inset: 0;
-  background-color: #fff0f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  transition: opacity 0.8s ease;
-  font-family: var(--primary-font);
-}
-
-.heart-loader {
-  position: relative;
-  width: 200px;
-  height: 180px;
-}
-
-.heart-outline {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 180px;
-  z-index: 2;
-}
-
-.heart-fill {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background-color: #ff7eb9;
-  clip-path: path("M100 30 C100 0, 0 0, 0 60 C0 120, 100 180, 100 180 C100 180, 200 120, 200 60 C200 0, 100 0, 100 30 Z");
-  transition: height 0.2s ease;
-  z-index: 1;
-}
-
-.heart-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  z-index: 3;
-  font-family: var(--secondary-font);
-  font-size: 1.5rem;
-}
-
-/* Trái tim nhỏ bay lúc loading */
-.hearts-container {
-  position: absolute;
-  bottom: 30px;
-  display: flex;
-  gap: 15px;
-}
-
-.heart-small {
-  width: 20px;
-  height: 20px;
-  background: red;
-  position: relative;
-  transform: rotate(-45deg);
-  animation: float 3s infinite;
-}
-
-.heart-small::before,
-.heart-small::after {
-  content: '';
-  width: 20px;
-  height: 20px;
-  background: red;
-  position: absolute;
-  border-radius: 50%;
-}
-
-.heart-small::before {
-  top: -10px;
-  left: 0;
-}
-
-.heart-small::after {
-  top: 0;
-  left: 10px;
-}
-
-@keyframes float {
-  0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
-  100% { transform: translateY(-150px) rotate(-45deg); opacity: 0; }
-}
-
-/* --- Tim bay theo con trỏ sau loading --- */
-.cursor-heart {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background-color: #ff4d88;
-  border-radius: 50%;
-  transform: rotate(-45deg);
-  pointer-events: none;
-  animation: heart-float 1s ease-out forwards;
-  z-index: 9999;
-}
-.cursor-heart::before,
-.cursor-heart::after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #ff4d88;
-  border-radius: 50%;
-}
-.cursor-heart::before {
-  top: -5px;
-  left: 0;
-}
-.cursor-heart::after {
-  top: 0;
-  left: 5px;
-}
-@keyframes heart-float {
-  0% { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(-40px) scale(1.5); }
-}
-
-
-/* Ẩn con trỏ chuột gốc */
-body {
-  cursor: none;
-}
-
-/* Icon mèo giả con trỏ */
-#custom-cursor {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  font-size: 28px;
-  color: #ff4d88;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s ease-out;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-#floating-hearts {
-  position: fixed;
-  pointer-events: none;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* Mỗi trái tim */
-.floating-heart {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #ff4d88;
-  transform: rotate(-45deg);
-  opacity: 0.8;
-  animation: float-heart 5s linear infinite;
-}
-.floating-heart::before,
-.floating-heart::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #ff4d88;
-  border-radius: 50%;
-}
-.floating-heart::before {
-  top: -10px;
-  left: 0;
-}
-.floating-heart::after {
-  top: 0;
-  left: 10px;
-}
-
-
-/* Hiệu ứng bay như gió */
-@keyframes float-heart {
-  0% {
-    transform: translateY(0) rotate(-45deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) translateX(30px) rotate(-45deg);
-    opacity: 0;
-  }
-}
-
-
-/* 3D card couple */
+/* =========================
+   5. 3D Card Couple
+========================= */
 .couple-card {
   flex-basis: 45%;
   min-width: 280px;
@@ -543,46 +111,8 @@ body {
   padding: 20px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  transform-style: preserve-3d;
 }
 .couple-card:hover {
   transform: rotateY(10deg) translateY(-10px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.25);
 }
-
-/* Gallery 3D hover */
-.gallery-grid img {
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-.gallery-grid img:hover {
-  transform: scale(1.08) rotateZ(2deg);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
-
-/* Timeline 3D pop */
-.timeline-content {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.timeline-content:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
