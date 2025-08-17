@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Chức năng 1: ĐẾM NGƯỢC THỜI GIAN ---
     // HÃY THAY ĐỔI NGÀY CƯỚI CỦA BẠN TẠI ĐÂY
-    const weddingDate = new Date("Aug 17, 2025 24:00:00").getTime();
+    const weddingDate = new Date("Aug 17, 2025 23:00:00").getTime();
 
     const countdownFunction = setInterval(function() {
         const now = new Date().getTime();
@@ -153,4 +153,5 @@ function createFloatingHeart() {
     heart.remove();
   }, 6000);
 }
+
 
