@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Chức năng 1: ĐẾM NGƯỢC THỜI GIAN ---
     // HÃY THAY ĐỔI NGÀY CƯỚI CỦA BẠN TẠI ĐÂY
-    const weddingDate = new Date("Aug 17, 2025 18:00:00").getTime();
+    const weddingDate = new Date("Aug 17, 2025 24:00:00").getTime();
 
     const countdownFunction = setInterval(function() {
         const now = new Date().getTime();
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Nếu hết thời gian
         if (distance < 0) {
             clearInterval(countdownFunction);
-            document.getElementById("countdown-timer").innerHTML = "<h2>Ngày kỷ niệm đã tới!</h2>";
+            document.getElementById("countdown-timer").innerHTML = "<h3>Ngày kỷ niệm đã tới!</h3>";
         }
     }, 1000);
 
@@ -153,3 +153,4 @@ function createFloatingHeart() {
     heart.remove();
   }, 6000);
 }
+
