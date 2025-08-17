@@ -89,42 +89,33 @@ section {
 
 /* --- 1. Màn hình chính (Hero) --- */
 #hero {
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Desktop sẽ giữ parallax */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: white;
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('./background.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
 #hero h1 {
-    font-size: 5rem;
-    margin: 10px 0;
-    letter-spacing: 3px;
-    white-space: nowrap; /* Không cho xuống dòng */
+  font-family: var(--secondary-font);
+  font-size: 5rem;
+  letter-spacing: 3px;
+  text-shadow: 0 4px 10px rgba(0,0,0,.5);
 }
-#hero p {
-    font-size: 1.2rem;
-}
+#hero p { font-size: 1.3rem; }
 .scroll-down-btn {
-    margin-top: 30px;
-    padding: 12px 25px;
-    border: 2px solid white;
-    border-radius: 30px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
+  margin-top: 30px;
+  padding: 12px 25px;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  transition: .3s;
 }
-.scroll-down-btn:hover {
-    background-color: white;
-    color: var(--primary-color);
-}
-
+.scroll-down-btn:hover { background: #fff; color: var(--primary-color); }
 /* --- 2. Cô dâu & Chú rể --- */
 .couple-container {
     display: flex;
@@ -270,41 +261,34 @@ section {
 }
 
 /* --- 6. Album ảnh --- */
-
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Luôn 3 ảnh / 1 hàng trên PC */
+  grid-template-columns: repeat(3, 1fr); /* PC: 3 ảnh/hàng */
   gap: 15px;
 }
-
 .gallery-grid img {
   width: 100%;
-  height: auto;
+  height: auto;           /* QUAN TRỌNG: tránh bị mất ảnh trên mobile */
   border-radius: 10px;
   object-fit: cover;
   cursor: pointer;
-  transition: transform .4s ease, box-shadow .4s ease;
+  transition: transform .4s, box-shadow .4s;
 }
-
 .gallery-grid img:hover {
   transform: scale(1.05) rotateZ(2deg);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 12px 25px rgba(0,0,0,.25);
 }
 
-/* Responsive cho tablet (2 ảnh 1 hàng) */
+/* Tablet: 2 ảnh / hàng */
 @media (max-width: 991px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Responsive cho điện thoại (1 ảnh 1 hàng) */
+/* Mobile: 1 ảnh / hàng */
 @media (max-width: 576px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
+  .gallery-grid { grid-template-columns: 1fr; gap: 10px; }
 }
+
 
 /* --- 7. Mừng cưới --- */
 .qr-container {
@@ -548,7 +532,10 @@ body {
     opacity: 0;
   }
 }
-
+@media (max-width: 768px) {
+  #hero { background-attachment: scroll; } /* Fix parallax mobile */
+  #hero h1 { font-size: 2.5rem; white-space: normal; }
+}
 
 /* 3D card couple */
 .couple-card {
@@ -583,6 +570,7 @@ body {
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
+
 
 
 
