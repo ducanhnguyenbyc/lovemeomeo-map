@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Nếu hết thời gian
         if (distance < 0) {
             clearInterval(countdownFunction);
-            document.getElementById("countdown-timer").innerHTML = "<h3>Ngày kỷ niệm đã tới!</h3>";
+            document.getElementById("countdown-timer").innerHTML = "<h2>Ngày kỷ niệm đã tới!</h2>";
         }
     }, 1000);
 
@@ -153,5 +153,6 @@ function createFloatingHeart() {
     heart.remove();
   }, 6000);
 }
+
 
 
